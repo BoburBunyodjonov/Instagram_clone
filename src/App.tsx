@@ -1,11 +1,14 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Layout
-const Layout = React.lazy(() => import("./layout/Layout"));
+import Layout from "./layout/Layout";
 
 // Pages
-const Home = React.lazy(() => import("./pages/home/container"));
+import Auth from "./pages/auth/container";
+import Home from "./pages/home/container";
+
+// Not Found Page
+import NotFound from "./pages/notFound/container/NotFound";
 
 
 const router = createBrowserRouter([
@@ -17,14 +20,21 @@ const router = createBrowserRouter([
         path: "",
         element: <Home />,
       },
-      // {
-      //   path: "/login",
-      //   element: <Auth />,
-      // },
+      {
+        path: "/login",
+        element: <Auth />,
+      },
+      {
+        path: "/register",
+        element: <Auth />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
     ],
   },
 ]);
-
 
 const App = () => {
   return (
